@@ -1,0 +1,47 @@
+exclude: tests/fixtures
+
+repos:
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.32.0
+    hooks:
+      - id: pyupgrade
+        args: [--py310-plus]
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v3.0.1
+    hooks:
+      - id: reorder-python-imports
+  - repo: https://github.com/ambv/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+  - repo: https://github.com/john-hen/Flake8-pyproject
+    rev: 0.9.0
+    hooks:
+      - id: Flake8-pyproject
+        additional_dependencies: [
+          flake8-bugbear,
+          flake8-annotations,
+          flake8-comprehensions,
+        ]
+        args: ["--suppress-none-returning"]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: debug-statements
+  - repo: https://github.com/myint/docformatter
+    rev: v1.4
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--pre-summary-newline"]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.942
+    hooks:
+      - id: mypy
+        additional_dependencies: []
+  - repo: https://github.com/PyCQA/doc8
+    rev: 0.11.1
+    hooks:
+      - id: doc8
